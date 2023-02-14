@@ -2,19 +2,27 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
+const emote = '/me copied an emote from a button click.';
 function copy() {
-navigator.clipboard.writeText('/me copied an emote from a button click.')
+  navigator.clipboard.writeText(emote)
 }
 </script>
 
 <template>
+  
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      <button @click="copy">/me copied an emote from a button click.</button>
-
+      
+      <v-text-field 
+        readonly 
+        v-model="emote" 
+        class="pr-0"
+        append-icon="file_copy"
+        @click:append="copy">
+      </v-text-field>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
