@@ -4,6 +4,9 @@ export interface ReportForm {
   patientIdentifier: string;
   injuries: InjuryOption[];
 
+  location: string;
+  notes: string;
+
   airway: string;
   breathing: string;
   circulation: string;
@@ -15,8 +18,8 @@ export interface ReportForm {
 
   allergies: string;
   prescriptions: string;
-  drugs: boolean;
-  alcohol: boolean;
+  dora: boolean | null;
+  dora_type: string;
 
   painMedicationQualification: string;
   painMedication: string;
