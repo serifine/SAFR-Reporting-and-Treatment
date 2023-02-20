@@ -15,6 +15,7 @@
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
     "vue-class-component": "^8.0.0-rc.1",
+    "vue-facing-decorator": "^2.1.13",
     "vue-router": "^4.1.6",
     "vuetify": "^3.1.5"
   },

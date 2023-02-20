@@ -1,6 +1,7 @@
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component'
+import { Component, Vue, Watch } from 'vue-facing-decorator'
 import * as consts from '../consts'
+import { useReportsStore } from '../stores/reports-store'
 
 import type { ReportForm } from '../models/report-form'
 
@@ -44,8 +45,12 @@ function getDefaultForm() {
   }
 }
 
-@Options({})
+const reportsStore = useReportsStore()
+
+@Component
 export default class ReportsView extends Vue {
+  
+  public callsign: string = localStorage.getItem('callsign') || ''
   public form: ReportForm = getDefaultForm()
 
   public injuryOptions = consts.StandardComplaints
@@ -61,16 +66,16 @@ export default class ReportsView extends Vue {
   public hospitalOptions = consts.HospitalLocations
   public hospitalStaffOptions = consts.HospitalStaffOptions
 
-  public primaryAssessment() {
-    let primaryAssessment =
-      `Airway: ${this.form.airway}\r` +
-      `Breathing: ${this.form.breathing}\r` +
-      `Circulation: ${this.form.circulation}\r` +
-      `Alertness: ${this.form.alertness}\r` +
-      `Skin: ${this.form.skin}\r` +
-      `Pulse: ${this.form.pulse}\r` +
-      `Pain Scale: ${this.form.painLevel}`
+  @Watch('form.dora')
+  public drugsOrAlcoholChanged(value: any) {
+    if (value == true) {
+      this.form.painMedicationQualification = 'Patient did not qualify for pain medication'
+    }
+  }
 
+  public primaryAssessment() {
+    let primaryAssessment = ''
+      
     if (this.form.location != '') {
       primaryAssessment += `Location: ${this.form.location}`
     }
@@ -187,7 +192,13 @@ export default class ReportsView extends Vue {
   }
 
   public vitalsAndSymptoms() {
-    return 'Vitals: \n\nSymptoms:'
+    return `Airway: ${this.form.airway}\r` +
+      `Breathing: ${this.form.breathing}\r` +
+      `Circulation: ${this.form.circulation}\r` +
+      `Alertness: ${this.form.alertness}\r` +
+      `Skin: ${this.form.skin}\r` +
+      `Pulse: ${this.form.pulse}\r` +
+      `Pain Scale: ${this.form.painLevel}`
   }
 
   public copyVitalsAndSymptoms() {
@@ -278,7 +289,7 @@ export default class ReportsView extends Vue {
                 <v-text-field label="Location" v-model="form.location" hide-details></v-text-field>
               </v-col>
               <v-col cols="12" sm="12">
-                <v-textarea label="Notes" v-model="form.notes" rows="3" hide-details></v-textarea>
+                <v-textarea label="Notes" v-model="form.notes" rows="2" hide-details></v-textarea>
               </v-col>
               <v-divider class="my-4" />
               <v-col cols="12" sm="12">
@@ -429,7 +440,7 @@ export default class ReportsView extends Vue {
           <v-card-title>{{ form.patientIdentifier }}</v-card-title>
           <v-card-subtitle>{{ form.location }}</v-card-subtitle>
 
-          <v-textarea label="Notes" :model-value="form.notes" readonly rows="4"></v-textarea>
+          <v-textarea label="Notes" :model-value="form.notes" readonly rows="2"></v-textarea>
 
           <v-divider />
 
@@ -437,7 +448,7 @@ export default class ReportsView extends Vue {
             label="Primary Assessment"
             :model-value="primaryAssessment()"
             readonly
-            rows="7"
+            rows="3"
             append-icon="file_copy"
             @click:append="copyPrimaryAssessment"
           ></v-textarea>
@@ -445,7 +456,7 @@ export default class ReportsView extends Vue {
             label="Secondary Assessment"
             :model-value="secondaryAssessment()"
             readonly
-            rows="4"
+            rows="3"
             append-icon="file_copy"
             @click:append="copySecondaryAssessment"
           ></v-textarea>
@@ -461,7 +472,7 @@ export default class ReportsView extends Vue {
             label="Vitals and Symptoms"
             :model-value="vitalsAndSymptoms()"
             readonly
-            rows="4"
+            rows="7"
             append-icon="file_copy"
             @click:append="copyVitalsAndSymptoms"
           ></v-textarea>
