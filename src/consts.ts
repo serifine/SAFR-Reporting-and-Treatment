@@ -235,6 +235,8 @@ export const StandardComplaints: InjuryOption[] = [{
   }
 ]
 
+export const CallType = [ '911 Call', '10-52', '10-13']
+
 export const BurnDegrees = ['First Degree', 'Second Degree', 'Third Degree']
 
 export const AirwayOptions = ['Clear', 'Partially Obstructed', 'Fully Obstructed']
@@ -246,9 +248,11 @@ export const SkinConditions = ['Normal', 'Minor Bruising', 'Moderate Bruising', 
 export const CirculationDescriptions = ['Normal', 'Minor bleeding', 'Moderate bleeding', 'Severe bleeding', 'Extreme bleeding']
 
 export const PulseDescription = [
+  'Mild Bradycardia (<60 BPM)',
   'Normal (60-100 BPM)',
   'Mild Tachycardia (100-120 BPM)',
-  'Mild Bradycardia (<60 BPM)',
+  'Moderate Tachycardia (121-170 BPM)',
+  'Severe Tachycardia (180+ BPM)',
   'No Pulse',
   'Custom'
 ]

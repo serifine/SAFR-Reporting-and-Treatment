@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-
-const emote = '/me copied an emote from a button click.'
-function copy() {
-  navigator.clipboard.writeText(emote)
-}
 </script>
 
 <template>
   <v-app>
-    <v-toolbar title="SAFR Reporting and Treatment">
+    <v-toolbar title="SAFR Reporting and Treatment" color="red">
       <router-link class="menu-item" to="/">Home</router-link>
       <router-link class="menu-item" to="reports">Reports</router-link>
     </v-toolbar>
@@ -22,11 +17,12 @@ function copy() {
 .menu-item {
   text-decoration: none;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   padding-right: 16px;
+  color: white;
 }
 
 .menu-item.router-link-active {
-  color: red;
+  font-weight: 700
 }
 </style>
