@@ -54,7 +54,7 @@ export const useReportsStore = defineStore('reports-store', {
     updateCurrentReport(form: ReportForm) {
       this.reports[this.currentIndex] = {...form}
     },
-    resetCurrentReport(form: ReportForm) {
+    resetCurrentReport() {
       this.reports[this.currentIndex] = {...getDefaultForm()}
     },
     addNewReport() {

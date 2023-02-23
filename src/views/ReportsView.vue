@@ -369,7 +369,7 @@ export default class ReportsView extends Vue {
             @click:append="copyAdditionalInfo"
           ></v-textarea>
           <v-divider class="pt-4" />
-          <v-btn color="primary" @click="exportTextFile">Save and Export</v-btn>
+          <v-btn color="primary" @click="exportTextFile">Save and Export to Text</v-btn>
           <v-btn color="red" class="ml-4" @click="resetForm">Reset Form</v-btn>
         </v-card>
       </v-col>
