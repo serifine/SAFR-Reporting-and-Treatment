@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import type { ReportForm } from '@/models/report-form'
 
@@ -37,6 +37,10 @@ function getDefaultForm(): ReportForm {
   }
 }
 
+function getReportsFromLocalStorage() {
+
+}
+
 export const useReportsStore = defineStore('reports-store', {
   state: () => ({
     currentIndex: 0,
@@ -48,6 +52,15 @@ export const useReportsStore = defineStore('reports-store', {
     currentReport: (state) => state.reports[state.currentIndex],
   },
   actions: {
+    restoreReportsFromStorage() {
+      const storedReports = localStorage.getItem('reports')
+
+      console.log(storedReports)
+
+      if(storedReports != null && storedReports != '') {
+        this.reports = JSON.parse(storedReports);
+      }
+    },
     updateCurrentIndex(newIndex: number) {
       this.currentIndex = newIndex
     },
@@ -55,13 +68,30 @@ export const useReportsStore = defineStore('reports-store', {
       this.reports[this.currentIndex] = {...form}
     },
     resetCurrentReport() {
-      this.reports[this.currentIndex] = {...getDefaultForm()}
+      this.updateCurrentReport({...getDefaultForm()})
     },
     addNewReport() {
+      console.log('add report')
       this.reports.push(getDefaultForm())
     },
     copyCurrentReport() {
       this.reports.push({...this.currentReport})
+    },
+    closeReport(index: number) {
+      this.reports.splice(index, 1)
+      // console.log(reports.length)
+      // this.reports = reports
+      // console.log({...reports})
     }
   },
+})
+
+const store = useReportsStore();
+
+store.$subscribe((mutation, state) => {
+  const reportsString = JSON.stringify(state.reports)
+
+  console.log(reportsString)
+
+  localStorage.setItem('reports', reportsString)
 })

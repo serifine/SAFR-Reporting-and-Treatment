@@ -51,6 +51,10 @@ export default class ReportsView extends Vue {
     }
   }
 
+  public mounted() {
+    reportsStore.restoreReportsFromStorage()
+  }
+
   public primaryAssessment() {
     return GeneratePrimaryAssessment(this.form)
   }
@@ -138,14 +142,21 @@ export default class ReportsView extends Vue {
   public copyReport() {
     reportsStore.copyCurrentReport()
   }
+
+  public closeReport(index: number) {
+    reportsStore.closeReport(index)
+  }
 }
 </script>
 
 <template>
   <v-toolbar color="red">
     <v-tabs v-model="currentIndex">
-      <v-tab v-for="report in reports">
+      <v-tab v-for="(report, index) of reports">
         {{ report.patientIdentifier || `${report.callType} - ${report.location}`  }}
+        <v-btn icon class="ml-4" size="small" @click="closeReport(index)">
+          <v-icon>close</v-icon>
+        </v-btn>
       </v-tab>
     </v-tabs>
     <v-spacer />
