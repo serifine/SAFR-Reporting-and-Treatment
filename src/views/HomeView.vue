@@ -3,7 +3,7 @@ import { Component, Vue, Watch } from 'vue-facing-decorator'
 
 @Component
 export default class ReportsView extends Vue {
-  public callsign: string = ''
+  public callsign: string = localStorage.getItem('callsign') || ''
 
   @Watch('callsign')
   public callsignChanged(value: string) {
