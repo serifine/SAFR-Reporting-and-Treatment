@@ -6,6 +6,7 @@ function getDefaultForm(): ReportForm {
   return {
     patientIdentifier: '',
     injuries: [],
+    cpr: { administered: false },
 
     location: '',
     notes: '',
@@ -28,9 +29,9 @@ function getDefaultForm(): ReportForm {
     painMedicationQualification: '',
     painMedication: '',
 
-    safrDischarge: '',
+    safrDischarge: 'Patient was transported to hospital by SAFR.',
     hospital: '',
-    hospitalHandoff: '',
+    hospitalHandoff: 'Local Nurses',
 
     leoName: '',
     hospitalStaffName: ''

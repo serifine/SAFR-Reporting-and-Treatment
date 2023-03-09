@@ -53,6 +53,7 @@ export default class ReportsView extends Vue {
 
   public mounted() {
     reportsStore.restoreReportsFromStorage()
+    this.form = reportsStore.currentReport
   }
 
   public primaryAssessment() {
@@ -224,6 +225,21 @@ export default class ReportsView extends Vue {
               <v-col cols="12" sm="4">
                 <v-combobox v-model="form.alertness" :items="alertnessOptions" label="Alertness"></v-combobox>
               </v-col>
+
+              <template v-if="form.pulse == 'No Pulse'">
+                <v-col cols="12" sm="3">
+                  <v-checkbox v-model="form.cpr.administered" label="CPR Performed" />
+                </v-col>
+                <v-col cols="12" sm="3">
+                  <v-checkbox v-model="form.cpr.epi" :disabled="!form.cpr.administered" label="Adrenaline Administered" />
+                </v-col>
+                <v-col cols="12" sm="3">
+                  <v-checkbox v-model="form.cpr.aed" :disabled="!form.cpr.epi" label="AED Used" />
+                </v-col>
+                <v-col cols="12" sm="3">
+                  <v-checkbox v-model="form.cpr.lucas" :disabled="!form.cpr.aed" label="LUCAS Used" />
+                </v-col>
+              </template>
 
               <v-col cols="12" sm="12">
                 <v-slider

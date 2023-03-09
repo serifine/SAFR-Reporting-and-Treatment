@@ -25,6 +25,10 @@ export const StandardComplaints: InjuryOption[] = [{
       emote: ''
     }]
   }, {
+    injuryName: 'Animal Attack (Minor)',
+    subInjuries: null,
+    treatments: []
+  }, {
     injuryName: 'Blunt Force Trauma',
     subInjuries: null,
     treatments: [{
@@ -101,6 +105,10 @@ export const StandardComplaints: InjuryOption[] = [{
       emote: ''
     },]
   }, {
+    injuryName: 'Drowning',
+    subInjuries: null,
+    treatments: []
+  }, {
     injuryName: 'Fall',
     subInjuries: null,
     treatments: [{
@@ -148,6 +156,14 @@ export const StandardComplaints: InjuryOption[] = [{
       reportText: 'Patient was made stable with a C-collar and spine board.',
       emote: ''
     }]
+  }, {
+    injuryName: 'Head Wound',
+    subInjuries: null,
+    treatments: []
+  }, {
+    injuryName: 'Head Trauma',
+    subInjuries: null,
+    treatments: []
   }, {
     injuryName: 'Multiple GSW\'s',
     subInjuries: null,

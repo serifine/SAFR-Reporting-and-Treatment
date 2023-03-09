@@ -1,12 +1,20 @@
 import type { InjuryOption } from './injury-options'
 
+export interface ReportFormCPR {
+  administered: boolean
+  epi?: boolean
+  aed?: boolean
+  lucas?: boolean
+}
+
 export interface ReportForm {
   patientIdentifier: string
   injuries: InjuryOption[]
+  cpr: ReportFormCPR
 
   location: string
   notes: string
-  callType: '' | '911 Call' | '10-52' | '10-13'
+  callType: '' | '911 Call' | '10-52' | '10-13B' | '10-13'
 
   airway: string
   breathing: string
