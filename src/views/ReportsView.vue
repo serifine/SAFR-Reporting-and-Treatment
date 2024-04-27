@@ -62,7 +62,7 @@ export default class ReportsView extends Vue {
 
   public secondaryAssessment() {
     const injuries = this.form.injuries.map(t => t.injuryName)
-    return `Patient suffered injuries related to a/an ${injuries}`
+    return `Patient suffered injuries related to ${injuries}`
   }
 
   public transportation() {
@@ -215,7 +215,7 @@ export default class ReportsView extends Vue {
               </v-col>
 
               <v-col cols="12" sm="4">
-                <v-combobox v-model="form.skin" :items="skinOptions" label="Skin" hide-details></v-combobox>
+                <v-combobox v-model="form.skin" :items="skinOptions" label="Skin" multiple chips hide-details></v-combobox>
               </v-col>
 
               <v-col cols="12" sm="4">

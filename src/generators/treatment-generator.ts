@@ -25,22 +25,23 @@ export function GenerateTreatment(form: ReportForm) {
   }
 
   if (injuries.includes('Blunt Force Trauma')) {
-    treatment += 'Patient made stable with a c-collar and a spine board. IV saline administered. Ice packs applied to bruising.'
+    treatment += 'Patient made stable with a c-collar and a spine board. Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages. IV saline administered. Ice packs applied to bruising.'
   }
   if (
     injuries.includes('GSW') ||
     injuries.includes("Multiple GSW's") ||
-    injuries.includes('Animal Attack') ||
-    injuries.includes('Stabbing')
+    injuries.includes('Animal Attack')
   ) {
     treatment +=
-      'Oxygen mask applied to paitent. Patients wounds were packed with gauze to stop bleeding. IV saline and TXA administered. Wounds flushed with IV saline, packed with fresh gauze, and wrapped in bandages. Patient was made stable with a C-collar and spine board.'
-  }
+      'Oxygen mask applied to paitent. Patients wounds were packed with gauze to stop bleeding. IV saline and TXA administered. Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages. Patient was made stable with a C-collar and spine board.'  }
   if (injuries.includes('Animal Attack (Minor)')) {
     treatment += 'Wounds flushed with IV saline and cleaned with antiseptic wipes, packed with fresh gauze, and wrapped in bandages.'
   }
+  if (injuries.includes('Stabbing')) {
+    treatment += 'Oxygen mask applied to paitent. Patient\'s woundspacked with gauze to help stop bleeding. Lodged item secured to prevent movement. IV saline and TXA administered. Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages. Patient was made stable with a C-collar and spine board for transport.'
+  }
   if (injuries.includes('Drowning')) {
-    treatment += 'Patient rolled into recovery position to expel water from lungs. Oxygen mask applied to paitent. Warm IV saline administered and patient wrapped in a thermal blanket.'
+    treatment += 'Checked patient\'s airway to confirm if lungs were waterlogged. Patient\'s airway (Clear/Blocked by Water). (#) rounds of CPR administered to help expel water from lungs. Patient rolled into recovery position to expel water from lungs. Water evacuated. Oxygen mask applied to paitent. Warm IV saline administered and patient wrapped in a thermal blanket. Patient made stable for transport with a c-collar and a spine board.'
   }
   if (injuries.includes('First Degree Burn')) {
     treatment +=
@@ -56,19 +57,23 @@ export function GenerateTreatment(form: ReportForm) {
   }
   if (injuries.includes('Fall')) {
     treatment +=
-      'C-Collar and oxygen mask applied to patient. IV saline started. Open wounds flushed with saline, covered in gauze, and wrapped in bandages. Concussion questions asked and (PASSED/FAILED). Patient secured with spine board, vaccum mattress, and head blocks.'
+      'C-Collar and oxygen mask applied to patient. IV saline started. Open wounds flushed with saline solution, covered in gauze, and wrapped in bandages. Concussion questions asked and (PASSED/FAILED). Patient secured with spine board, vaccum mattress, and head blocks.'
   }
   if (injuries.includes('MVA')) {
     treatment +=
-      'C-Collar and oxygen mask applied to patient. IV saline started. Open wounds flushed with saline, covered in gauze, and wrapped in bandages. Patient secured with spine board, and ice packs applied to bruises.'
+      'Patient\'s neck stablized and immobilized with a c-collar. Oxygen mask applied to patient. IV saline started. Open wounds flushed with saline solution, covered in gauze, and wrapped in bandages. Ice packs applied to bruising.Patient was made stable with a spine board for transport. (OR Patient secured with spine board and head blocks for transport.)'
   }
   if (injuries.includes('Head Wound')) {
     treatment +=
-      'Open wounds flushed with saline, covered in gauze, and wrapped in bandages. Concussion questions asked and (PASSED/FAILED).'
+      'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages. Concussion questions asked and (PASSED/FAILED).'
   }
   if (injuries.includes('Head Trauma')) {
     treatment +=
-      'Oxygen mask applied to paitent. Open wounds flushed with saline, covered in gauze, and wrapped in bandages. Concussion questions asked and (PASSED/FAILED). Patient was made stable with a C-collar and spine board.'
+      'Patient\'s neck stablized and immobilized with a c-collar. Oxygen mask applied to paitent. Head wound evaluated for significant bleeding or other fluids. (FINDINGS) Open wounds flushed with saline, covered in gauze, and wrapped in bandages. (IF Severe bleeding) IV saline and TXA administered. Concussion questions asked and (PASSED/FAILED). Patient secured with spine board and head blocks for transport.'
+  }
+  if (injuries.includes('Starvation/Dehydration/Low Blood Sugar')) {
+    treatment +=
+      '(If Starvation) Patient\'s blood sugar analyized using glucometer. IV Saline (Or Dextrose) started.'
   }
   if (injuries.includes('Other')) {
     treatment += 'FILL IN OTHER TREATMENT'
@@ -83,9 +88,12 @@ export function GenerateTreatment(form: ReportForm) {
       treatment += 'Patient declined pain medication.'
       break
     case 'Patient did not qualify for pain medication':
-    default:
       treatment += 'Patient did not qualify for pain medication.'
       break
+      case 'Pain medication not offered':
+        default:
+          treatment += 'Pain medication was not offered to patient.'
+          break
   }
 
   treatment += `\r\r${GenerateTransportation(form)}`
