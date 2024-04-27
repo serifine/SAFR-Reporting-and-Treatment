@@ -6,43 +6,51 @@ export const StandardComplaints: InjuryOption[] = [{
     treatments: [{
       label: 'Oxygen Mask',
       reportText: 'Oxygen mask applied to paitent.',
-      emote: ''
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
     },{
       label: 'Wounds packed',
-      reportText: 'Patients wounds were packed with gauze to stop bleeding.',
-      emote: ''
+      reportText: 'Patients wounds packed with gauze to help stop bleeding.',
+      emote: '/me packs the patients wounds with gauze to help control bleeding.'
     },{
       label: 'IV Saline and TXA',
       reportText: 'IV saline and TXA administered.',
-      emote: ''
+      emote: '/me hooks up IV line of saline. Pushes a unit of TXA into IV bag.'
     },{
       label: 'Flush/Pack/Wrap',
-      reportText: 'Wounds flushed with IV saline, packed with fresh gauze, and wrapped in bandages.',
-      emote: ''
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
     },{
       label: 'C-Collar',
       reportText: 'Patient was made stable with a C-collar and spine board.',
-      emote: ''
+      emote: '/me secures patient with c-collar, then rolls them onto a spine board and secures them with straps.'
     }]
   }, {
     injuryName: 'Animal Attack (Minor)',
     subInjuries: null,
-    treatments: []
+    treatments: [{
+      label: 'Flush/Pack/Wrap',
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
+    }]
   }, {
     injuryName: 'Blunt Force Trauma',
     subInjuries: null,
     treatments: [{
       label: 'C-Collar and Spine Board',
       reportText: 'Patient made stable with a c-collar and a spine board.',
-      emote: ''
+      emote: '/me secures patient with c-collar, then rolls them onto a spine board and secures them with straps.'
+    },{
+      label: 'Flush/Pack/Wrap',
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
     },{
       label: 'IV saline administered.',
       reportText: 'IV saline administered.',
-      emote: ''
+      emote: '/me hooks up IV line of saline.'
     },{
       label: 'Ice Packs',
       reportText: 'Ice packs applied to bruising.',
-      emote: ''
+      emote: '/me applies stick on ice packs to bruising.'
     },]
   }, {
     injuryName: 'First Degree Burn',
@@ -50,15 +58,15 @@ export const StandardComplaints: InjuryOption[] = [{
     treatments: [{
       label: 'Cool With Saline',
       reportText: 'Patient\'s burns cooled with saline.',
-      emote: ''
+      emote: '/me Flushes patient\'s burns with saline solution to cool them.'
     },{
       label: 'Aloe Gel',
       reportText: 'Aloe gel applied.',
-      emote: ''
+      emote: '/me applies aloe gel to patient\'s burns.'
     },{
       label: 'Advise Patient',
       reportText: 'Patient advised to stay out of the sun and to keep burn site away from sources of elevated heat.',
-      emote: ''
+      emote: 'N/A'
     }]
   }, {
     injuryName: 'Second Degree Burn',
@@ -66,19 +74,19 @@ export const StandardComplaints: InjuryOption[] = [{
     treatments: [{
       label: 'Cool With Saline',
       reportText: 'Patient\'s burns cooled with saline.',
-      emote: ''
+      emote: '/me Flushes patient\'s burns with saline solution to cool them.'
     },{
       label: 'Aloe Gel',
       reportText: 'Aloe gel applied.',
-      emote: ''
+      emote: '/me applies aloe gel to patient\'s burns.'
     },{
       label: 'Burn Dressing Applied',
       reportText: 'Burn dressing applied to wound.',
-      emote: ''
+      emote: '/me applies burn dressing to patient\'s wound.'
     },{
       label: 'Advise Patient',
       reportText: 'Patient advised to reapply aloe and change bandage every 24 hours until wound has healed.',
-      emote: ''
+      emote: 'N/A'
     }]
   }, {
     injuryName: 'Third Degree Burn',
@@ -86,135 +94,201 @@ export const StandardComplaints: InjuryOption[] = [{
     treatments: [{
       label: 'Oxygen Mask',
       reportText: 'Oxygen mask applied to paitent.',
-      emote: ''
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
     },{
-      label: 'IV Saline',
+      label: 'IV saline administered.',
       reportText: 'IV saline administered.',
-      emote: ''
+      emote: '/me hooks up IV line of saline.'
     },{
-      label: 'Burn Dressings',
-      reportText: 'All burns covered with burn dressings.',
-      emote: ''
+      label: 'Burn Dressing Applied',
+      reportText: 'Burn dressing applied to wound.',
+      emote: '/me applies burn dressing to patient\'s wound.'
     },{
       label: 'Oxygen Monitor',
       reportText: 'Patient hooked up to oxygen monitor.',
-      emote: ''
+      emote: '/me hooks up patient to vitals monitoring to watch oxygen levels and pulse.'
     },{
-      label: 'C-Collar / Spineboard',
-      reportText: 'Patient was made stable with a C-collar and spine board.',
-      emote: ''
+      label: 'C-Collar and Spine Board',
+      reportText: 'Patient made stable with a c-collar and a spine board.',
+      emote: '/me secures patient with c-collar, then rolls them onto a spine board and secures them with straps.'
     },]
   }, {
     injuryName: 'Drowning',
     subInjuries: null,
-    treatments: []
+    treatments: [
+      {
+        label: 'Airway Check',
+        reportText: 'Checked patient\'s airway to confirm if lungs were waterlogged. Patient\'s airway (Clear/Blocked by Water)',
+        emote: '/me checks patient\'s airway to confirm if lungs are full of water.'
+      },{
+        label: 'CPR',
+        reportText: '(#) rounds of CPR administered to help expel water from lungs',
+        emote: 'Use CPR Emotes'
+      },{
+        label: 'Recovery Position',
+        reportText: 'Patient turned into recovery position to promote water expulsion from lungs. Water evacuated',
+        emote: '/me hooks up IV line of saline.'
+      },{
+        label: 'Oxygen Mask',
+        reportText: 'Oxygen mask applied to paitent.',
+        emote: '/me applies oxygen mask to patient and sets flow to high.'
+      },{
+        label: 'Warm IV saline administered.',
+        reportText: 'Warm IV saline administered.',
+        emote: '/me hooks up IV line of saline.'
+      },{
+        label: 'Space Blanket.',
+        reportText: 'Patient wrapped in space blanket to help warm up.',
+        emote: '/me wraps patient in space blanket to help warm up.'
+      },{
+        label: 'C-Collar and Spine Board',
+        reportText: 'Patient made stable for transport with a c-collar and a spine board.',
+        emote: '/me secures patient with c-collar, then rolls them onto a spine board and secures them with straps.'
+      },
+    ]
   }, {
     injuryName: 'Fall',
     subInjuries: null,
     treatments: [{
-      label: '',
-      reportText: '',
-      emote: ''
+      label: 'C-Collar',
+      reportText: 'Patient\'s neck stablized and immobilized with a c-collar',
+      emote: '/me ataches C-collar around patient\'s next to stabilize and immobilize it. '
     },{
-      label: '',
-      reportText: '',
-      emote: ''
+      label: 'Oxygen Mask',
+      reportText: 'Oxygen mask applied to paitent.',
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
     },{
-      label: '',
-      reportText: '',
-      emote: ''
+      label: 'IV saline administered.',
+      reportText: 'IV saline administered.',
+      emote: '/me hooks up IV line of saline.'
     },{
-      label: '',
-      reportText: '',
-      emote: ''
+      label: 'Concussion Questions',
+      reportText: ' Concussion questions asked and (PASSED/FAILED).',
+      emote: 'N/A'
     },{
-      label: '',
-      reportText: '',
-      emote: ''
-    },]
+      label: 'Advanced Transport Security',
+      reportText: 'Patient secured with spine board, vaccum mattress, and head blocks.',
+      emote: '/me rolls patient carefully onto a spine board and secures them with straps. Further secures their body with a vacuum mattress and their head with head blocks.'
+    }]
   }, {
     injuryName: 'GSW',
     subInjuries: null,
     treatments: [{
       label: 'Oxygen Mask',
       reportText: 'Oxygen mask applied to paitent.',
-      emote: ''
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
     },{
       label: 'Wounds packed',
-      reportText: 'Patients wounds were packed with gauze to stop bleeding.',
-      emote: ''
+      reportText: 'Patients woundspacked with gauze to help stop bleeding.',
+      emote: '/me packs the patients wounds with gauze to help control bleeding.'
     },{
       label: 'IV Saline and TXA',
       reportText: 'IV saline and TXA administered.',
-      emote: ''
+      emote: '/me hooks up IV line of saline. Pushes a unit of TXA into IV bag.'
     },{
       label: 'Flush/Pack/Wrap',
-      reportText: 'Wounds flushed with IV saline, packed with fresh gauze, and wrapped in bandages.',
-      emote: ''
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
     },{
       label: 'C-Collar',
       reportText: 'Patient was made stable with a C-collar and spine board.',
-      emote: ''
+      emote: '/me secures patient with c-collar, then rolls them onto a spine board and secures them with straps.'
     }]
   }, {
     injuryName: 'Head Wound',
     subInjuries: null,
-    treatments: []
+    treatments: [{
+      label: 'Flush/Pack/Wrap',
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
+    },{
+      label: 'Concussion Questions',
+      reportText: ' Concussion questions asked and (PASSED/FAILED).',
+      emote: 'N/A'
+    }]
   }, {
     injuryName: 'Head Trauma',
     subInjuries: null,
-    treatments: []
+    treatments: [{
+      label: 'C-Collar',
+      reportText: 'Patient\'s neck stablized and immobilized with a c-collar',
+      emote: '/me ataches C-collar around patient\'s next to stabilize and immobilize it. '
+    },{
+      label: 'Oxygen Mask',
+      reportText: 'Oxygen mask applied to paitent.',
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
+    },{
+      label: 'Head Evaluation.',
+      reportText: 'Head wound evaluated for significant bleeding or other fluids. (FINDINGS)',
+      emote: '/me looks carefully over patient\'s head wounds for any significant bleeding, or any fluid coming from the ears.'
+    },{
+      label: 'IV Saline and TXA',
+      reportText: 'IV saline and TXA administered.',
+      emote: '/me hooks up IV line of saline. Pushes a unit of TXA into IV bag.'
+    },{
+      label: 'Concussion Questions',
+      reportText: ' Concussion questions asked and (PASSED/FAILED).',
+      emote: 'N/A'
+    },{
+      label: 'Advanced Head Transport Security',
+      reportText: 'Patient secured with spine board and head blocks for transport.',
+      emote: '/me rolls patient carefully onto a spine board and secures them with straps. Further secures their head with head blocks.'
+    }]
   }, {
     injuryName: 'Multiple GSW\'s',
     subInjuries: null,
     treatments: [{
       label: 'Oxygen Mask',
       reportText: 'Oxygen mask applied to paitent.',
-      emote: ''
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
     },{
       label: 'Wounds packed',
-      reportText: 'Patients wounds were packed with gauze to stop bleeding.',
-      emote: ''
+      reportText: 'Patients woundspacked with gauze to help stop bleeding.',
+      emote: '/me packs the patients wounds with gauze to help control bleeding.'
     },{
       label: 'IV Saline and TXA',
       reportText: 'IV saline and TXA administered.',
-      emote: ''
+      emote: '/me hooks up IV line of saline. Pushes a unit of TXA into IV bag.'
     },{
       label: 'Flush/Pack/Wrap',
-      reportText: 'Wounds flushed with IV saline, packed with fresh gauze, and wrapped in bandages.',
-      emote: ''
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
     },{
       label: 'C-Collar',
       reportText: 'Patient was made stable with a C-collar and spine board.',
-      emote: ''
+      emote: '/me secures patient with c-collar, then rolls them onto a spine board and secures them with straps.'
     }]
   }, {
     injuryName: 'MVA',
     subInjuries: null,
     treatments: [{
       label: 'C-Collar',
-      reportText: 'C-Collar applied to patient.',
-      emote: ''
+      reportText: 'Patient\'s neck stablized and immobilized with a c-collar',
+      emote: '/me ataches C-collar around patient\'s next to stabilize and immobilize it. '
     },{
-      label: 'C-Collar and oxygen mask applied to patient.',
-      reportText: 'C-Collar and oxygen mask applied to patient.',
-      emote: ''
+      label: 'Oxygen Mask',
+      reportText: 'Oxygen mask applied to paitent.',
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
     },{
-      label: 'IV Saline',
-      reportText: 'IV saline started.',
-      emote: ''
+      label: 'IV saline administered.',
+      reportText: 'IV saline administered.',
+      emote: '/me hooks up IV line of saline.'
     },{
-      label: 'Wounds Flushed',
-      reportText: 'Open wounds flushed with saline, covered in gauze, and wrapped in bandages.',
-      emote: ''
+      label: 'Concussion Questions',
+      reportText: ' Concussion questions asked and (PASSED/FAILED).',
+      emote: 'N/A'
+    },{
+      label: 'Flush/Pack/Wrap',
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
     },{
       label: 'Ice Packs',
-      reportText: 'Ice packs applied to bruises.',
-      emote: ''
+      reportText: 'Ice packs applied to bruising.',
+      emote: '/me applies stick on ice packs to bruising.'
     },{
-      label: 'Spine Board',
-      reportText: 'Patient secured with spine board.',
-      emote: ''
+      label: 'Spine Board OR Advanced Transport',
+      reportText: 'Patient was made stable with a spine board for transport. OR Patient secured with spine board and head blocks for transport.',
+      emote: '/me carefully rolls the patient onto a spine board and secures them with straps. OR /me rolls patient carefully onto a spine board and secures them with straps. Further secures their head with head blocks.'
     },]
   }, {
     injuryName: 'Stabbing',
@@ -222,23 +296,27 @@ export const StandardComplaints: InjuryOption[] = [{
     treatments: [{
       label: 'Oxygen Mask',
       reportText: 'Oxygen mask applied to paitent.',
-      emote: ''
+      emote: '/me applies oxygen mask to patient and sets flow to high.'
     },{
       label: 'Wounds packed',
-      reportText: 'Patients wounds were packed with gauze to stop bleeding.',
-      emote: ''
+      reportText: 'Patient\'s woundspacked with gauze to help stop bleeding.',
+      emote: '/me packs the patients wounds with gauze to help control bleeding.'
+    },{
+      label: 'Item ',
+      reportText: 'Lodged item secured to prevent movement.',
+      emote: '/me Secures the lodged item to prevent it from moving.'
     },{
       label: 'IV Saline and TXA',
       reportText: 'IV saline and TXA administered.',
-      emote: ''
+      emote: '/me hooks up IV line of saline. Pushes a unit of TXA into IV bag.'
     },{
       label: 'Flush/Pack/Wrap',
-      reportText: 'Wounds flushed with IV saline, packed with fresh gauze, and wrapped in bandages.',
-      emote: ''
+      reportText: 'Wounds flushed with saline solution, packed with fresh gauze, and wrapped in bandages.',
+      emote: '/me flushes wounds with saline solution, packs with gauze, and wraps in bandages.'
     },{
       label: 'C-Collar',
-      reportText: 'Patient was made stable with a C-collar and spine board.',
-      emote: ''
+      reportText: 'Patient was made stable with a C-collar and spine board for transport.',
+      emote: '/me secures patient with c-collar, then rolls them onto a spine board and secures them with straps.'
     }]
   }, {
     injuryName: 'Starvation/Dehydration/Low Blood Sugar',
@@ -251,7 +329,7 @@ export const StandardComplaints: InjuryOption[] = [{
   }
 ]
 
-export const CallType = [ '911 Call', '10-52', '10-13']
+export const CallType = [ '911 Call', '911 Text', '311 Call', '311 Text','10-52', '10-13', "10-13B"]
 
 export const BurnDegrees = ['First Degree', 'Second Degree', 'Third Degree']
 
@@ -259,7 +337,7 @@ export const AirwayOptions = ['Clear', 'Partially Obstructed', 'Fully Obstructed
 
 export const BreathingTypes = ['Normal', 'Labored', 'Not Breathing']
 
-export const SkinConditions = ['Normal', 'Minor Bruising', 'Moderate Bruising', 'Severe Bruising', 'Extreme Bruising']
+export const SkinConditions = ['Normal', 'Minor Bruising', 'Moderate Bruising', 'Severe Bruising', 'Extreme Bruising','Localized Burns', 'Significant Burns', 'Extensive Burns', 'Full-Body Burns']
 
 export const CirculationDescriptions = ['Normal', 'Minor bleeding', 'Moderate bleeding', 'Severe bleeding', 'Extreme bleeding']
 
@@ -288,7 +366,7 @@ export const SafrTreatmentDischargeOptions = [
 
 export const HospitalStaffOptions = ['Local Nurses', 'Specific Staff Member']
 
-export const HospitalLocations = ['Pillbox Medical Center', 'Sandy Medical Center', 'Paleto Medical Center']
+export const HospitalLocations = ['Mt. Zonah Medical Center', 'Sandy Medical Center', 'Paleto Medical Center']
 
 export function GetPainDescription(indicatedPainLevel: number) {
   switch (true) {
@@ -321,7 +399,8 @@ export function GetHighestPainMedication(indicatedPainLevel: number) {
 export const PainMedicationAdministrationOptions = [
   'Patient was given pain medication',
   'Patient declined pain medication',
-  'Patient did not qualify for pain medication'
+  'Patient did not qualify for pain medication',
+  'Pain medication not offered'
 ]
 
-export const PainMedicationOptions = ['Ibuprofin', 'Tylenol', 'Tramadol']
+export const PainMedicationOptions = ['Ibuprofin', 'Tylenol', 'Tramadol', 'Morphine']

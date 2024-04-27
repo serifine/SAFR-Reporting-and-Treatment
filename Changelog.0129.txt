@@ -1,0 +1,24 @@
+Updates made to:
+- index.html
+ - Updated "Title" from "Vite App" to "SAFR Report Tool" for ease of confusion with newbies.
+
+- consts.ts
+ - Extensive rewording of report language and corrections to grammar and spelling.
+ - Addition of emotes for each treatement. (Not sure if usable, but figured while I was here...)
+ - Update of HospitalLocations constant to replace Pillbox w/ Mt. Zonah.
+ - Update of SkinConditions constant to include burns of varying size (Localized, Significant, Extensive, Full-Body).
+ - Update of PainMedicationOptions constant to include morphine.
+ - Update of CallType constant to include 911 text, 311 Text/Call, and 10-13B.
+ - Added a "Pain medication not offered" selection to the PainMedicationAdministrationOptions constant.
+ 
+- primary-assessment-generator.ts
+ - Updated dora section language for positive dora to `Patient reported they were under the influence of ${form.dora_type} within the last 24 hours.`
+ 
+-treatment-generator.ts
+ - Added "Pain medication not offered" case to add "Pain medication was not offered to patient." Set this as the default text.
+ 
+-favicon.ico
+ -Overwrote image with 32x32 px SAFR Logo
+ 
+-ReportsView.vue
+ - Updated the form.skin skinOptions to include multiple and chips to allow for selection of bruising and burns.
