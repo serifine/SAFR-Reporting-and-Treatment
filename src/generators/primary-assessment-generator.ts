@@ -43,9 +43,9 @@ export function GeneratePrimaryAssessment(form: any) {
   if(form.alertness == 'Patient was non-responsive/unconscious on scene.'){
   }
   else if (form.prescriptions == '') {
-    primaryAssessment += 'Patient stated they are not on any perscription medications.'
+    primaryAssessment += 'Patient stated they are not on any prescription medications.'
   } else {
-    primaryAssessment += `Patient reported taking the following perscriptions: ${form.prescriptions}`
+    primaryAssessment += `Patient reported taking the following prescriptions: ${form.prescriptions}`
   }
 
   return primaryAssessment
